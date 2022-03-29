@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 body, textarea {
     font-family: monospace, monospace;
     background-color: #212121;
@@ -6,13 +10,16 @@ body, textarea {
 }
 
 .main {
+    width: 90%;
+    max-width: 720px;
+    height: 90%;
+}
+
+.absolute-center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 720px;
-    height: 90%;
 }
 
 .maxsize {
@@ -33,4 +40,26 @@ textarea {
 
 textarea::-webkit-scrollbar {
     display: none;
+}
+
+.circle {
+    background-color: #dcdcdc;
+    width: min(6000px, 900vh, 900vw);
+    height: min(6000px, 900vh, 900vw);
+    border-radius: 50%;
+    transition: linear width 1s, linear height 1s;
+}
+
+.circle img, .circle canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 7%;
+    width: 7%;
+}
+
+.circle-closed {
+    height: 0%;
+    width: 0%;
 }

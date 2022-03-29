@@ -1,5 +1,6 @@
 const m = require("mithril");
 const editView = require("./components/edit-view.js");
+const qrView = require("./components/qr-view.js");
 
 // ugly workaround to fix scrolling on route change
 // https://github.com/MithrilJS/mithril.js/issues/1655
@@ -20,4 +21,5 @@ m.mount(
 
 m.route(document.body, "/", {
     "/": editView,
+    "/qr": qrView,
 });
