@@ -1,0 +1,36 @@
+body, textarea {
+    font-family: monospace, monospace;
+    background-color: #212121;
+    color: #dcdcdc;
+    line-height: 1.5;
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 720px;
+    height: 90%;
+}
+
+.maxsize {
+    width: 100%;
+    height: 100%;
+}
+
+textarea {
+    resize: none;
+    outline: none;
+    border: none;
+    width: 200px;
+    overflow-y: scroll;
+    overflow_x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+textarea::-webkit-scrollbar {
+    display: none;
+}
