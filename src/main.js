@@ -1,4 +1,5 @@
 const m = require("mithril");
+const state = require("./modules/state.js");
 const editView = require("./components/edit-view.js");
 const qrView = require("./components/qr-view.js");
 
@@ -19,7 +20,20 @@ m.mount(
     }
 )
 
+
+const main = () => {
+    return {
+        view: () => m(".pagewrap", {
+            class: state.qr? "": "scroll-down",
+        },
+            m(qrView),
+            m(editView),
+        ),
+    }
+}
+
+document.body.onclick = state.closeQr;
+
 m.route(document.body, "/", {
-    "/": editView,
-    "/qr": qrView,
+    "/": main,
 });

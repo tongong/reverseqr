@@ -11,11 +11,13 @@ new WebrtcProvider("jaskdfasdfasdf", ydoc, { });
 
 module.exports = () => {
     return {
-        view: () => m(".main.absolute-center", m("textarea.maxsize", {
-            oncreate: (v) => {
-                new TextAreaBinding(textelem, v.dom);
-                v.dom.focus();
-            },
-        })),
+        view: () => m(".page",
+            m(".main.absolute-center", m("textarea.maxsize", {
+                oncreate: (v) => {
+                    new TextAreaBinding(textelem, v.dom);
+                    v.dom.focus();
+                },
+            })),
+        )
     }
 };

@@ -42,24 +42,34 @@ textarea::-webkit-scrollbar {
     display: none;
 }
 
-.circle {
-    background-color: #dcdcdc;
-    width: min(6000px, 900vh, 900vw);
-    height: min(6000px, 900vh, 900vw);
-    border-radius: 50%;
-    transition: linear width 1s, linear height 1s;
+.pagewrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 200vh;
 }
 
-.circle img, .circle canvas {
+.scroll-down {
+    transition: ease-in-out top 0.8s;
+    top: -100vh;
+}
+
+.page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.qrwrap {
+    background-color: #dcdcdc;
+}
+
+.qrwrap img, .qrwrap canvas {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 7%;
-    width: 7%;
-}
-
-.circle-closed {
-    height: 0%;
-    width: 0%;
+    width: min(512px, 90vh, 90vw);
+    height: min(512px, 90vh, 90vw);
 }
