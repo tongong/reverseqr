@@ -51,8 +51,12 @@ textarea::-webkit-scrollbar {
 }
 
 .scroll-down {
-    transition: ease-in-out top 0.8s;
+    transition: cubic-bezier(.65,.05,.17,1.01) top 1s;
     top: -100vh;
+}
+
+.scroll-down-finished {
+    transition: none;
 }
 
 .page {

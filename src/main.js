@@ -6,9 +6,16 @@ const qrView = require("./components/qr-view.js");
 store.subscribe(s => s, () => m.redraw());
 
 const main = () => {
+    let qrDelay = store().qr;
+    store.subscribe(s => s.qr, qrn => window.setTimeout(
+        () => { qrDelay = qrn; m.redraw(); }, 1000
+    ));
     return {
         view: () => m(".pagewrap", {
-            class: store().qr? "" : "scroll-down",
+            class: [
+                store().qr? "" : "scroll-down",
+                qrDelay? "" : "scroll-down-finished",
+            ].join(" "),
         },
             m(qrView),
             m(editView),
