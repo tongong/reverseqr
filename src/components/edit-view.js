@@ -1,20 +1,19 @@
 const m = require("mithril");
-
-const Y = require("yjs");
-const { WebrtcProvider } = require("y-webrtc");
 const { TextAreaBinding } = require("y-textarea");
 
-const ydoc = new Y.Doc();
-const textelem = ydoc.getText("shared-buffer");
-new WebrtcProvider("jaskdfasdfasdf", ydoc, { });
-
+const store = require("../modules/store.js");
 
 module.exports = () => {
     return {
         view: () => m(".page",
             m(".main.absolute-center", m("textarea.maxsize", {
                 oncreate: (v) => {
-                    new TextAreaBinding(textelem, v.dom);
+                    let binding = null;
+                    store.subscribe(s => s.ydoc, ydoc => {
+                        if (binding) binding.destroy();
+                        binding = new TextAreaBinding(
+                            ydoc.getText("shared-buffer"), v.dom);
+                    }, { fireImmediately: true });
                     v.dom.focus();
                 },
             })),

@@ -20,8 +20,10 @@ module.exports = bindGetFn(createStore(subscribeWithSelector(
         id: "",
         idSet: (n) => {
             if (!navigation.isIdValid(n)) n = navigation.generateId();
-            return set(() => ({id: n}))
+            set(() => ({id: n}))
         },
-        ydoc: undefined,
+        ydoc: null,
+        ydocSet: (n) => set(() => ({ ydoc: n })),
+        users: 0,
     })
 )));
