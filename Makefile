@@ -1,9 +1,9 @@
 dev:
-	npx parcel src/index.html
+	npx parcel src/index.html --no-autoinstall
 
 build:
 	rm -r dist
-	npx parcel build src/index.html
+	npx parcel build src/index.html --no-autoinstall
 
 # abuse of git but whatever i just want github pages
 # unstaged changes on master will be lost
