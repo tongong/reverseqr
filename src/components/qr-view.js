@@ -1,20 +1,23 @@
 const m = require("mithril");
 const store = require("../modules/store.js");
-const qr = require("../modules/qrcode.js");
+const qr = require("qr-creator").default;
 
 module.exports = () => {
     return {
         view: () => m(".page.qrwrap", {
             oncreate: (v) => {
-                let qrcode = new qr(v.dom, {
-                    text: window.location.href,
-                    colorDark: "#212121",
-                    colorLight: "#dcdcdc",
-                    width: 512,
-                    height: 512,
-                });
                 store.subscribe(s => s.id,
-                    () => qrcode.makeCode(window.location.href)
+                    () => {
+                        v.dom.innerHTML = "";
+                        qr.render({
+                            text: window.location.href,
+                            radius: 0,
+                            fill: "#212121",
+                            background: null,
+                            size: 512,
+                        }, v.dom);
+                    },
+                    { fireImmediately: true }
                 );
             }
         })
