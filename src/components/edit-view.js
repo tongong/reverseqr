@@ -14,7 +14,11 @@ module.exports = () => {
                         binding = new TextAreaBinding(
                             ydoc.getText("shared-buffer"), v.dom);
                     }, { fireImmediately: true });
-                    v.dom.focus();
+                    store.subscribe(s => s.qr, (qrn, qro) => {
+                        if (!qrn && qro) {
+                            v.dom.focus();
+                        }
+                    });
                 },
             })),
         )
